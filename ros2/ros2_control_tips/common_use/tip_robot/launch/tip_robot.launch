@@ -1,0 +1,35 @@
+<launch>
+    <!-- Path to the robot's URDF/Xacro file -->
+    <let name="urdf_path" 
+         value="path_to.urdf.xacro" />
+
+    <!-- Path to the RViz2 configuration file -->
+    <let name="rviz_config_path"
+         value="$"path_to_config.rviz" />
+
+    <!-- Publishes TF and joint states based on the URDF description -->
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <!-- Generate robot_description from Xacro -->
+        <param name="robot_description"
+               value="$(command 'xacro $(var urdf_path)')" />
+        <!-- Remap robot_description so controllers read the same parameter -->
+        <remap from="/robot_description" to="/controller_manager/robot_description"/>
+    </node>
+
+    <!-- Main ros2_control node: loads hardware, controllers, and parameters -->
+    <node pkg="controller_manager" exec="ros2_control_node">
+        <!-- Load controller configuration file -->
+        <param from="$(find-pkg-share tip_robot)/config/tip_robot_controller.yaml" />
+    </node>
+
+    <!-- Start joint_state_broadcaster (publishes joint states to TF/RViz) -->
+    <node pkg="controller_manager" exec="spawner" args="joint_state_broadcaster"/>
+
+    <!-- Start the differential drive controller -->
+    <node pkg="controller_manager" exec="spawner" args="diff_drive_controller"/>
+
+    <!-- Launch RViz2 with the selected configuration -->
+    <node pkg="rviz2" exec="rviz2" output="screen" 
+          args="-d $(var rviz_config_path)" />
+</launch>
+

@@ -1,0 +1,38 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # Controller manager update frequency in Hz
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster # Publishes joint states
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController # Differential drive controller plugin
+
+diff_drive_controller:
+  ros__parameters:
+    left_wheel_names: ["left_wheel_joint"]  # Joint name(s) for the left wheel
+    right_wheel_names: ["right_wheel_joint"]  # Joint name(s) for the right wheel
+
+
+    wheel_separation: 0.35   # Distance between the left and right wheels (meters)
+    wheel_radius: 0.1        # Radius of the wheels (meters)
+
+    odom_frame_id: "odom"               # Frame in which odometry is published
+    base_frame_id: "base_footprint"     # Base frame of the robot
+
+    pose_covariance_diagonal:           # Odometry pose covariance (diagonal values)
+      [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+
+    twist_covariance_diagonal:          # Odometry twist covariance (diagonal values)
+      [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+
+    enable_odom_tf: true                # If true, publishes odom → base TF transform
+
+    publish_rate: 50.0                  # Odometry publication rate in Hz
+
+    linear.x.has_velocity_limits: true  # Enable velocity limits for linear motion
+    linear.x.max_velocity: 1.0          # Maximum forward speed (m/s)
+    linear.x.min_velocity: -1.0         # Maximum backward speed (negative)
+
+    angular.z.has_velocity_limits: true # Enable velocity limits for angular motion
+    angular.z.max_velocity: 1.0         # Maximum angular velocity (rad/s)
+    angular.z.min_velocity: -1.0        # Minimum angular velocity (rad/s)

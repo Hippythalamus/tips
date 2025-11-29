@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <!-- Package name and version -->
+  <name>tip_robot</name>
+  <version>0.0.0</version>
+
+  <!-- Short description of the package -->
+  <description>Package that launches the TIP robot model, controllers, and RViz visualization.</description>
+
+  <!-- Maintainer information -->
+  <maintainer email="slepynina.eu@gmail.com">evg</maintainer>
+
+  <!-- License (should be replaced with a real one like Apache-2.0, MIT, BSD, etc.) -->
+  <license>TODO: License declaration</license>
+
+  <!-- Build system dependency -->
+  <!-- ament_cmake is required to build this package -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <!-- Publishes TF and joint states based on URDF -->
+  <exec_depend>robot_state_publisher</exec_depend>
+
+  <!-- Loads and manages ros2_control components -->
+  <exec_depend>controller_manager</exec_depend>
+
+  <!-- Provides the robot's URDF/XACRO description -->
+  <exec_depend>tip_robot_description</exec_depend>
+
+  <!-- Visualization tool -->
+  <exec_depend>rviz2</exec_depend>
+
+  <!-- Optional test dependencies -->
+  <!-- Enables automatic linting and basic ROS2 package checks -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <!-- Export build type for ROS 2 -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
