@@ -3,7 +3,7 @@
 <package format="3">
   <name>motor_test</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>hw driver (BDC motor EPOS4) and its integration into ros2 project</description>
   <maintainer email="slepynina.eu@gmail.com">evg</maintainer>
   <license>TODO: License declaration</license>
 
