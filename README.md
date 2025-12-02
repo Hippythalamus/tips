@@ -4,14 +4,8 @@ A structured collection of small technical experiments, notes, and practice proj
 
 **Contents include:**
 
- - Modern C++17 techniques and patterns
+ - Some C++17 patterns
 
  - ROS2 robot development (URDF, controllers, hardware interfaces)
-
- - Practical interview-style exercises
-
- - Algorithms, iterators, and memory-model explorations
-
- - Low-level systems programming samples
 
 The goal is to maintain a clean, growing collection of examples I can quickly reference during interviews or reuse as a foundation for future robotics work.
