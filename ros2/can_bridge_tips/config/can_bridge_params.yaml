@@ -1,0 +1,7 @@
+can_bridge_vcan:
+  ros__parameters:
+    can_interface: "can0"
+    queue_size: 10
+    can_id: 291
+
+#this file should be in ros2_ws/ 
