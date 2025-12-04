@@ -1,0 +1,57 @@
+qos_profiles:
+
+  camera_default:
+    update_rate_hz: 30        #  RGB/mono camera . perception 
+    reliability: best_effort
+    durability: volatile
+    history: keep_last
+    depth: 1
+
+  camera_slam:
+    update_rate_hz: 30        # camera used for SLAM
+    reliability: best_effort
+    durability: volatile
+    history: keep_last
+    depth: 5
+
+  lidar_default:
+    update_rate_hz: 10        # 3D LiDAR  perception and obstacle detection
+    reliability: best_effort
+    durability: volatile
+    history: keep_last
+    depth: 5  # 1 for navigation
+
+  imu_high_rate:
+    update_rate_hz: 200       # High-rate IMU  state control, stabilization, etc
+    reliability: best_effort
+    durability: volatile
+    history: keep_last
+    depth: 10
+
+  imu_critical:
+    update_rate_hz: 200       # Critical IMU  balance control loops
+    reliability: reliable
+    durability: volatile
+    history: keep_last
+    depth: 50
+
+  odometry:
+    update_rate_hz: 50        #odometry
+    reliability: reliable
+    durability: volatile
+    history: keep_last
+    depth: 10
+
+  tf:
+    update_rate_hz: 30        # TF broadcaster)
+    reliability: reliable
+    durability: volatile
+    history: keep_last
+    depth: 10
+
+  cmd_vel:
+    update_rate_hz: 20        # Velocity command 
+    reliability: reliable
+    durability: volatile
+    history: keep_last
+    depth: 1

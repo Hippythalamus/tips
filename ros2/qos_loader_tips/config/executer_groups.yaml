@@ -1,0 +1,40 @@
+executors:
+
+  multi_threaded:
+    type: MultiThreadedExecutor
+    max_threads: auto        
+    use_guard_condition: true
+
+  single_threaded: #odometry, cmd
+    type: SingleThreadedExecutor
+    use_guard_condition: false
+
+  single_threaded_dedicated:  #imu highrate! minimize jitter
+    type: SingleThreadedExecutor
+    dedicated_thread: true   # special thread
+    lock_memory: true        # mlockall 
+    priority: high           # real-time if we have
+
+callback_groups:
+
+  reentrant:
+    type: ReentrantCallbackGroup
+
+  mutually_exclusive:
+    type: MutuallyExclusiveCallbackGroup 
+
+cpu_affinity_policies:
+
+  none:
+    description: "without pinning to cpu"
+
+  optional:
+    example_core_mask: [2,3]
+
+  recommended:
+    description: "pin the thread to a CPU core "
+    example_core_mask: [1]
+
+  required:
+    description: "It is mandatory to pin the thread to a CPU core and assign it a real-time priority"
+    example_core_mask: [0]

@@ -1,0 +1,37 @@
+execution_profiles:
+
+  camera_default:
+    executor: multi_threaded
+    callback_group: reentrant
+    cpu_affinity: -1        # optional
+
+  camera_slam:
+    executor: multi_threaded
+    callback_group: reentrant
+    cpu_affinity: -1        # optional
+
+  lidar_default:
+    executor: multi_threaded
+    callback_group: reentrant
+    cpu_affinity: -1        # optional
+
+  imu_critical:
+    executor: single_threaded_dedicated
+    callback_group: mutually_exclusive
+    cpu_affinity: 3         # required
+
+  odometry:
+    executor: single_threaded
+    callback_group: mutually_exclusive
+    cpu_affinity: -1        # optional
+
+  tf:
+    executor: single_threaded
+    callback_group: mutually_exclusive
+    cpu_affinity: -1        # optional
+
+  cmd_vel:
+    executor: single_threaded
+    callback_group: mutually_exclusive
+    cpu_affinity: 1         # recommended 
+
